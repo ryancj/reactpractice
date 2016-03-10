@@ -2,28 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>React.js Box with State</title>
+    <title>React.js Timer</title>
     <script src="react.js"></script>
     <script src="react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   </head>
   <body>
     <div id="container"></div>
-
     <script type="text/babel">
-    var Time = React.createClass({
-      render: function() {
-        return (
-          <p>
-          {this.props.date.toTimeString()}
-          </p>
-        );
-      }
-    });
-
-    setInterval(function() {
-      ReactDOM.render(<Time date={new Date()} />, document.getElementById('container'));
-  }, 500);
-  </script>
+      var Timer = React.createClass({
+        getInitialState: function(){
+          var now = new Date();
+          return {timer: now.toString()};
+        },
+        componentDidMount: function() {
+          setInterval(function(){
+            var now = new Date();
+            this.setState({timer: now.toString()});
+          }.bind(this), 1000);
+        },
+        render: function() {
+          return <div>{this.state.timer}</div>
+        }
+      });
+      ReactDOM.render(<Timer />, document.getElementById('container'));
+    </script>
   </body>
 </html>
