@@ -1,0 +1,68 @@
+<head>
+  <meta charset="utf-8">
+  <title>React.js Hello World</title>
+  <script src="react.js"></script>
+  <script src="react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+  <style>
+    #square {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border-radius: 25px;
+    }
+
+    #circle {
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      border-radius: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <div id="container-1"></div>
+  <div id="container-2"></div>
+  <div id='container-3'></div>
+  <div id='container-4'></div>
+
+  <script type="text/babel">
+    var HelloWorld = React.createClass({
+      render: function() {
+        var styles = {color: '#0FF', fontSize: '20px'}
+        return <div style={styles}>
+                Hello World!
+                <p>Hello React!</p>
+               </div>
+      }
+    });
+
+    var Greeting = React.createClass({
+      render: function(){
+        return <p>Hello {this.props.name}</p>;
+      }
+    });
+
+    var Box = React.createClass({
+      render: function() {
+
+        return <div id={this.props.type}></div>;
+      }
+    });
+
+    var Circle = React.createClass({
+      render: function() {
+
+        return <div id={this.props.type}></div>;
+      }
+    });
+
+    ReactDOM.render(<HelloWorld />, document.getElementById('container'));
+    ReactDOM.render(<Greeting name="John" />, document.getElementById('container-1'));
+    ReactDOM.render(<Greeting name="Marry" />, document.getElementById('container-2'));
+    ReactDOM.render(<Box type='square'/>, document.getElementById('container-3'));
+    ReactDOM.render(<Circle type='circle'/>, document.getElementById('container-4'));
+  </script>
+</body>
+</html>

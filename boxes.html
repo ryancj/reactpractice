@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React.js Hello World</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="container-1"></div>
+    <div id="container-2"></div>
+    <div id="container-3"></div>
+    <div id="container-4"></div>
+    <script type="text/babel">
+      var style1 = {width: "100px", height: "100px", border: "2px solid red",
+                    borderRadius: "10px", backgroundColor: "red",
+                    margin: "5px", float: "left"};
+      var style2 = {width: "100px", height: "100px", border: "2px solid green",
+                    borderRadius: "99px", backgroundColor: "green",
+                    margin: "5px", float: "left"};
+      var style3 = {width: "65px", height: "200px", border: "2px solid blue",
+                    borderRadius: "20px", backgroundColor: "blue",
+                    margin: "5px", float: "left"};
+      var style4 = {width: "200px", height: "150px", border: "2px solid darkred",
+                    borderRadius: "10px", backgroundColor: "darkred",
+                    margin: "5px", float: "left"};
+      var Box = React.createClass({
+        render: function() {
+          var styls = {borderRadius: this.props.borderRadius}
+          return <div style={this.props.style}>
+                 </div>;
+        }
+      });
+      ReactDOM.render(<Box style={style1} />,document.getElementById('container-1'));
+      ReactDOM.render(<Box style={style2} />,document.getElementById('container-2'));
+      ReactDOM.render(<Box style={style3} />,document.getElementById('container-3'));
+      ReactDOM.render(<Box style={style4} />,document.getElementById('container-4'));
+    </script>
+  </body>
+</html>

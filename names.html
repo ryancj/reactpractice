@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React.js Hello World</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="container-1"></div>
+    <div id="container-2"></div>
+
+    <script type="text/babel">
+      var Person = React.createClass({
+        render: function() {
+          return <li>{this.props.name}</li>;
+        }
+      });
+
+      //This is a Person Component
+
+      var Team = React.createClass({
+        people: function() {
+          return this.props.members.map(function(name, index){
+                    return <Person name={name} key={index} />;
+                 });
+        },
+        render: function() {
+          return <div>
+                  <h2>{this.props.title}</h2>
+                  <ul>
+                    {this.people()}
+                  </ul>
+                 </div>;
+        }
+      });
+      //This is a Team Component
+      ReactDOM.render(<Team title="Team Awesome" members={['Michael', 'Ryan']} />, document.getElementById('container-1'));
+      //h2 is the title, run the people function inside the ul, the people function takes the members and
+      //maps the array [<Person name='Ryan' />, <Person name='Bob' />]
+      ReactDOM.render(<Team title="Team Fantastic" members={['Cerize', 'Stanley']} />, document.getElementById('container-2'));
+    </script>
+  </body>
+</html>
